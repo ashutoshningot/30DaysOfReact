@@ -1,0 +1,49 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hello world</title>
+  <link href="Style.css" type="text/css" rel="stylesheet"  />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <!-- Script tags including React -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="text/babel">
+class Clocks extends React.Component{
+  constructor(props) {
+    super(props);
+    //assign initial value of the state
+    this.state = {textvalue:""}
+  }
+
+showAlert(){
+  //showing the state's value when button is clicked
+  alert("value of the textbox is :: " + this.state.textvalue);
+}
+updateText(e){
+  //getting the value of the textbox and updating the state of the Component
+  var val = e.target.value;
+  this.setState(
+    {textvalue:val}
+  )
+}
+  render(){
+
+    return(
+      <div>
+      <input type="text" onChange={this.updateText.bind(this)} />
+      <input type="button" value="CLICK ME!" onClick={this.showAlert.bind(this)}/>
+      </div>
+    )
+  }
+}
+
+    //without the ReactDOM.render nothing will be visible on the screen.
+    var mount = document.querySelector('#app');
+    ReactDOM.render(<Clocks />, mount);
+  </script>
+</body>
+</html>
